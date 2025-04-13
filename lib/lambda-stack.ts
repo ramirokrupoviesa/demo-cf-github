@@ -6,7 +6,7 @@ class LambdaStack extends cdk.Stack {
     super(scope, id, props);
 
     new cdk.aws_lambda_nodejs.NodejsFunction(this, "Fn", {
-      entry: "lambda.index.ts",
+      entry: "lambda/index.ts",
     });
   }
 }
