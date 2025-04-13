@@ -9,7 +9,7 @@ export class GithubSlideStack extends Stack {
     new cdk.pipelines.CodePipeline(this, "Pipeline", {
       synth: new cdk.pipelines.ShellStep("SynthStep", {
         input: cdk.pipelines.CodePipelineSource.connection(
-          "demo-cf-github",
+          "ramirokrupoviesa/demo-cf-github",
           "main",
           {
             connectionArn:
