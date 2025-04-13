@@ -13,7 +13,7 @@ export class GithubSlideStack extends Stack {
           "main",
           {
             connectionArn:
-              "arn:aws:codestar-connections:us-east-1:222222222222:connection/7d2469ff-514a-4e4f-9003-5ca4a43cdc41",
+              "arn:aws:codeconnections:us-east-1:058472766567:connection/253e48e0-1d98-43a0-8f72-8fa2e0f13072",
           }
         ),
         commands: ["npm ci", "npx cdk synth"],
