@@ -1,19 +1,23 @@
-import { Duration, Stack, StackProps } from 'aws-cdk-lib';
-import * as sns from 'aws-cdk-lib/aws-sns';
-import * as subs from 'aws-cdk-lib/aws-sns-subscriptions';
-import * as sqs from 'aws-cdk-lib/aws-sqs';
-import { Construct } from 'constructs';
+import { Duration, Stack, StackProps } from "aws-cdk-lib";
+import * as cdk from "aws-cdk-lib";
+import { Construct } from "constructs";
 
 export class GithubSlideStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    const queue = new sqs.Queue(this, 'GithubSlideQueue', {
-      visibilityTimeout: Duration.seconds(300)
+    new cdk.pipelines.CodePipeline(this, "Pipeline", {
+      synth: new cdk.pipelines.ShellStep("SynthStep", {
+        input: cdk.pipelines.CodePipelineSource.connection(
+          "demo-cf-github",
+          "main",
+          {
+            connectionArn:
+              "arn:aws:codestar-connections:us-east-1:222222222222:connection/7d2469ff-514a-4e4f-9003-5ca4a43cdc41",
+          }
+        ),
+        commands: ["npm ci", "npx cdk synth"],
+      }),
     });
-
-    const topic = new sns.Topic(this, 'GithubSlideTopic');
-
-    topic.addSubscription(new subs.SqsSubscription(queue));
   }
 }
