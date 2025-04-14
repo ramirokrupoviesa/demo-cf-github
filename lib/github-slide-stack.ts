@@ -3,7 +3,7 @@ import * as cdk from "aws-cdk-lib";
 import { Construct } from "constructs";
 import { MyStage } from "./lambda-stack";
 
-export class GithubSlideStack extends Stack {
+export class GithubPipelineStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 

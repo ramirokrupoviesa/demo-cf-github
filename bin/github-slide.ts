@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import * as cdk from 'aws-cdk-lib';
-import { GithubSlideStack } from '../lib/github-slide-stack';
+import * as cdk from "aws-cdk-lib";
+import { GithubPipelineStack } from "../lib/github-slide-stack";
 
 const app = new cdk.App();
-new GithubSlideStack(app, 'GithubSlideStack');
+new GithubPipelineStack(app, "GithubSlideStack");
