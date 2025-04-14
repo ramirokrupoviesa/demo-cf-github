@@ -21,12 +21,12 @@ export class GithubSlideStack extends Stack {
       }),
     });
 
-    const devStage = new MyStage(this, "Dev");
-    pipeline.addStage(devStage);
+    // const devStage = new MyStage(this, "Dev");
+    // pipeline.addStage(devStage);
 
-    const prodStage = new MyStage(this, "Prod");
-    pipeline
-      .addStage(prodStage)
-      .addPre(new cdk.pipelines.ManualApprovalStep("Approve"));
+    // const prodStage = new MyStage(this, "Prod");
+    // pipeline
+    //   .addStage(prodStage)
+    //   .addPre(new cdk.pipelines.ManualApprovalStep("Approve"));
   }
 }
